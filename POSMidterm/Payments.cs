@@ -1,13 +1,10 @@
 ﻿using System;
 namespace POSMidterm
 {
-    public class MenuUtility
+    public class CreditCardRegex
     {
-        public MenuUtility()
+        public CreditCardRegex()
         {
-
         }
-
-
     }
 }
