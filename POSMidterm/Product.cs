@@ -1,9 +1,10 @@
 ﻿using System;
 namespace POSMidterm
 {
-    public class Menu
+    public class Product
+
     {
-        public Menu(string foodName, double price)
+        public Product(string foodName, double price)
         {
             FoodName = foodName;
             Price = price;
@@ -12,6 +13,6 @@ namespace POSMidterm
         public string FoodName { get; set; }
         public double Price { get; set; }
 
-       
+      
     }
 }
