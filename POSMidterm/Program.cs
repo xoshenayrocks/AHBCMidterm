@@ -6,7 +6,9 @@ namespace POSMidterm
     {
         static void Main(string[] args)
         {
-
+            
+            Payments.GetPaymentType();
+            Payments.ValidateCreditCardInfo();
         }
     }
 }
