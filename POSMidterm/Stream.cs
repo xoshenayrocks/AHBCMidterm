@@ -26,25 +26,6 @@ namespace POSMidterm
                 }
             }
         }
-
-        public static void WriteTheMenu(string filePath)
-        {
-            using (StreamWriter inputfile = new StreamWriter(filePath))
-            {
-                inputfile.WriteLine("rain rain go away");
-            }
-        }
-
-        public static void AppendTheMenu()
-        {
-            using (StreamWriter inputfile = new StreamWriter(filePath, true))
-            {
-                inputfile.WriteLine("cool");
-            }
-
-
-        }
-
         public static string AddToOrder(int linenumber) //The item the user wants can be arranged to be on the same line
         {
 
@@ -63,8 +44,6 @@ namespace POSMidterm
 
                 return orderedItem;
             }
-
-
         }
 
         public static void AddToOrderList(int linenumber)
@@ -115,6 +94,23 @@ namespace POSMidterm
 
         // TryParse is an option. Split the string.
         // Instatiate a Menu/Product class object and assign the parameters from the array created from the .Split() above.
+        /*public static void WriteTheMenu(string filePath)
+{
+    using (StreamWriter inputfile = new StreamWriter(filePath))
+    {
+        inputfile.WriteLine("rain rain go away");
+    }
+}
+
+public static void AppendTheMenu()
+{
+    using (StreamWriter inputfile = new StreamWriter(filePath, true))
+    {
+        inputfile.WriteLine("cool");
+    }
+
+
+}*/
     }
 }
 

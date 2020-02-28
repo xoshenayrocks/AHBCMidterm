@@ -21,7 +21,7 @@ namespace POSMidterm
 
         public static double GetChange(double amountTendered, double actualTotal)
         {
-            double changeTotal = amountTendered - actualTotal;
+            double changeTotal = amountTendered- actualTotal;
             return changeTotal;
         }
 
