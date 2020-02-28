@@ -8,7 +8,7 @@ namespace POSMidterm
         {
             
             Payments.GetPaymentType();
-            Payments.ValidateCreditCardInfo();
+        
         }
     }
 }

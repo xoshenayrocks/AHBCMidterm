@@ -15,7 +15,8 @@ namespace POSMidterm
             string userInput = Console.ReadLine();
             if (userInput == "1" ||userInput.Equals("cash", StringComparison.OrdinalIgnoreCase))
             {
-                GetCashPayment();
+
+                Console.WriteLine($"Change due: ${SubtotalBill.GetChange(GetCashPayment(), SubtotalBill.GetActualTotal(1, 2))} "); 
                 Console.WriteLine("Thank you! Enjoy!");
                 //need to add get change method from Alejandra
             }
@@ -29,17 +30,24 @@ namespace POSMidterm
             }
 
         }
-        public class CreditCard
-        {
-
-        }
 
         public static double GetCashPayment()
         {
-            Console.WriteLine("Please enter the amount tendered");
+            Console.WriteLine("Please enter cash amount tendered: ");
             string userInput = Console.ReadLine();
             double amountTendered = double.Parse(userInput);
             return amountTendered;
+        }
+
+        public static void GetCheckNumber()
+        {
+            Regex checkNumber = new Regex(@"^([0-9]){4}$");
+            Console.WriteLine("Please enter the check number: " );
+            string userCheckNumber = Console.ReadLine();
+            if (!checkNumber.IsMatch(userCheckNumber))
+            {
+
+            }
         }
 
         public static void ValidateCreditCardInfo()
@@ -50,34 +58,39 @@ namespace POSMidterm
             Regex cvv = new Regex(@"^([0-9]){3}$");
 
             bool isValid = false;
-          
-            while (!isValid)
+            do
             {
-                Console.WriteLine("Please enter your credit card number, expiration date [MM/YY], and 3-digit CVV number. (Please enter one space between each.)");
+                Console.WriteLine("Please enter your credit card number, expiration date [MM/YY], and 3-digit CVV number: ");
+          
                 string userInput = Console.ReadLine();
                 string[] creditCardInfo = userInput.Split(" ");
 
                 if (!creditCard.IsMatch(creditCardInfo[0]))
                 {
                     Console.WriteLine("Card number is not valid. Please enter a valid 16-digit card number.");
+                    creditCardInfo[0] = Console.ReadLine();
                     isValid = false;
                 }
                 if (!expiration.IsMatch(creditCardInfo[1]))
                 {
                     Console.WriteLine("Expiration date is not valid. Please enter a valid 2-digit month and 2-digit year.");
+                    creditCardInfo[1] = Console.ReadLine();
                     isValid = false;
                 }
 
                 if (!cvv.IsMatch(creditCardInfo[2]))
                 {
                     Console.WriteLine("CVV is not valid. Please enter the 3-digit CVV number on the back of your card.");
+                    creditCardInfo[2] = Console.ReadLine();
+                    isValid = false;
                 }
-                else
+                else if (creditCard.IsMatch(creditCardInfo[0]) || expiration.IsMatch(creditCardInfo[1]) || cvv.IsMatch(creditCardInfo[2]))
                 {
-                    Console.WriteLine("Thank you");
-                    isValid = true;
+                    Console.WriteLine("Thank you!");
+
                 }
-            }
+            } while (isValid);
+
 
         }
 
