@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace midterm
+namespace POSMidterm
 
 {
     public static class SubtotalBill
