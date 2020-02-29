@@ -11,6 +11,7 @@ namespace POSMidterm
 
         public static void GetPaymentType ()
         {
+<<<<<<< HEAD
             Console.WriteLine("How would you like to pay for your item(s)? [1] Cash, [2] Credit, or [3] Check?");
             string userInput = Console.ReadLine();
             if (userInput == "1" ||userInput.Equals("cash", StringComparison.OrdinalIgnoreCase))
@@ -18,6 +19,16 @@ namespace POSMidterm
                 decimal change = (decimal)SubtotalBill.GetChange(GetCashPayment(), SubtotalBill.GetActualTotal(1, 2));
                 Console.WriteLine($"Change due: ${change} ");
                 //"GetActualTotal" method needs to take in price of product and qty
+=======
+            Console.WriteLine("How would you like to pay for your items? [1] Cash, [2] Credit, or [3] Check?");
+            string userInput = Console.ReadLine();
+            if (userInput == "1" ||userInput.Equals("cash", StringComparison.OrdinalIgnoreCase))
+            {
+
+                Console.WriteLine($"Change due: ${SubtotalBill.GetChange(GetCashPayment(), SubtotalBill.GetActualTotal(1, 2))} "); 
+                Console.WriteLine("Thank you! Enjoy!");
+                //need to add get change method from Alejandra
+>>>>>>> 4c7ee0b58bb46325ac92255264bbe75582c2aa70
             }
             else if (userInput == "2" || userInput.Equals("credit", StringComparison.OrdinalIgnoreCase))
             {
@@ -25,7 +36,11 @@ namespace POSMidterm
             }
             else if (userInput == "3" || userInput.Equals("check", StringComparison.OrdinalIgnoreCase))
             {
+<<<<<<< HEAD
                 GetCheckNumber();
+=======
+
+>>>>>>> 4c7ee0b58bb46325ac92255264bbe75582c2aa70
             }
 
         }
@@ -35,13 +50,17 @@ namespace POSMidterm
             Console.WriteLine("Please enter cash amount tendered: ");
             string userInput = Console.ReadLine();
             double amountTendered = double.Parse(userInput);
+<<<<<<< HEAD
             Console.WriteLine("Thank you! Enjoy!");
+=======
+>>>>>>> 4c7ee0b58bb46325ac92255264bbe75582c2aa70
             return amountTendered;
         }
 
         public static void GetCheckNumber()
         {
             Regex checkNumber = new Regex(@"^([0-9]){4}$");
+<<<<<<< HEAD
             Console.WriteLine("Please enter the check number: ");
             string userCheckNumber = Console.ReadLine();
             bool isValid = true;
@@ -58,6 +77,14 @@ namespace POSMidterm
 
             Console.WriteLine("Thank you! Enjoy!");
 
+=======
+            Console.WriteLine("Please enter the check number: " );
+            string userCheckNumber = Console.ReadLine();
+            if (!checkNumber.IsMatch(userCheckNumber))
+            {
+
+            }
+>>>>>>> 4c7ee0b58bb46325ac92255264bbe75582c2aa70
         }
 
         public static void ValidateCreditCardInfo()
@@ -96,7 +123,11 @@ namespace POSMidterm
                 }
                 else if (creditCard.IsMatch(creditCardInfo[0]) || expiration.IsMatch(creditCardInfo[1]) || cvv.IsMatch(creditCardInfo[2]))
                 {
+<<<<<<< HEAD
                     Console.WriteLine("Thank you! Enjoy!");
+=======
+                    Console.WriteLine("Thank you!");
+>>>>>>> 4c7ee0b58bb46325ac92255264bbe75582c2aa70
 
                 }
             } while (isValid);
@@ -104,6 +135,9 @@ namespace POSMidterm
 
         }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4c7ee0b58bb46325ac92255264bbe75582c2aa70
     }
 }
