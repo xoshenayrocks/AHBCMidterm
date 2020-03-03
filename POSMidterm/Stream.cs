@@ -10,7 +10,7 @@ namespace POSMidterm
     {
 
         static string filePath = "C:/Users/Sipe/AHBC-DOTNET-Q1-2020-Det/FileIO/bin/Debug/netcoreapp3.1/ale";
-        static int linenumber = 6;
+        static int linenumber = 1;
         static string orderedItem;
         static List<Product> wholeOrder = new List<Product>();
 
