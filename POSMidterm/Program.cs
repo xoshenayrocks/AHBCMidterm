@@ -6,7 +6,7 @@ namespace POSMidterm
     {
         static void Main(string[] args)
         {
-            
+
         }
     }
 }
