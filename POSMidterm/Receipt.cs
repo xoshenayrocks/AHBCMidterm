@@ -15,9 +15,9 @@ namespace POSMidterm
             Console.WriteLine("==========================");
             Console.WriteLine($"{dateTime}");
             Console.WriteLine("");
-            Console.WriteLine("Items Ordered: (this is where product and qty will go)");
-            Console.WriteLine($"Subtotal: ${SubtotalBill.GetTotal(1,2)}");
-            Console.WriteLine($"Grand Total: ${SubtotalBill.GetActualTotal(1,2)}");
+            Console.WriteLine($"{Streams.PrintOutOrder()}");
+            Console.WriteLine($"Subtotal: ${Streams.InstatiateSubTotal()}");
+            Console.WriteLine($"Grand Total: ${Streams.InstatiateGrandTotal()}");
             //need to put if client pays with cash, credit, card
            
         }
