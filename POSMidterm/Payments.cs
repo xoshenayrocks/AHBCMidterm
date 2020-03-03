@@ -11,14 +11,14 @@ namespace POSMidterm
 
         public static void GetPaymentType ()
         {
-            Console.WriteLine("How would you like to pay for your items? [1] Cash, [2] Credit, or [3] Check?");
+
+            Console.WriteLine("How would you like to pay for your item(s)? [1] Cash, [2] Credit, or [3] Check?");
             string userInput = Console.ReadLine();
             if (userInput == "1" ||userInput.Equals("cash", StringComparison.OrdinalIgnoreCase))
             {
+                decimal change = (decimal)SubtotalBill.GetChange(GetCashPayment(), SubtotalBill.GetActualTotal(1, 2));
+                Console.WriteLine($"Change due: ${change} ");
 
-                Console.WriteLine($"Change due: ${SubtotalBill.GetChange(GetCashPayment(), SubtotalBill.GetActualTotal(1, 2))} "); 
-                Console.WriteLine("Thank you! Enjoy!");
-                //need to add get change method from Alejandra
             }
             else if (userInput == "2" || userInput.Equals("credit", StringComparison.OrdinalIgnoreCase))
             {
@@ -26,6 +26,8 @@ namespace POSMidterm
             }
             else if (userInput == "3" || userInput.Equals("check", StringComparison.OrdinalIgnoreCase))
             {
+
+                GetCheckNumber();
 
             }
 
@@ -42,12 +44,21 @@ namespace POSMidterm
         public static void GetCheckNumber()
         {
             Regex checkNumber = new Regex(@"^([0-9]){4}$");
-            Console.WriteLine("Please enter the check number: " );
-            string userCheckNumber = Console.ReadLine();
-            if (!checkNumber.IsMatch(userCheckNumber))
-            {
 
-            }
+            Console.WriteLine("Please enter the check number: ");
+            string userCheckNumber = Console.ReadLine();
+            bool isValid = true;
+
+            do
+            {
+                if (!checkNumber.IsMatch(userCheckNumber))
+                {
+                    Console.WriteLine("Check number is invalid. Please enter a valid 4-digit check number.");
+                    userCheckNumber = Console.ReadLine();
+                    isValid = false;
+                }
+            } while (!isValid);
+
         }
 
         public static void ValidateCreditCardInfo()
@@ -86,13 +97,15 @@ namespace POSMidterm
                 }
                 else if (creditCard.IsMatch(creditCardInfo[0]) || expiration.IsMatch(creditCardInfo[1]) || cvv.IsMatch(creditCardInfo[2]))
                 {
-                    Console.WriteLine("Thank you!");
+
+                    Console.WriteLine("Thank you! Enjoy!");
 
                 }
             } while (isValid);
 
 
         }
+
 
     }
 }
