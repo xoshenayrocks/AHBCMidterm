@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace POSMidterm
 {
@@ -6,7 +7,29 @@ namespace POSMidterm
     {
         static void Main(string[] args)
         {
+            List<Product> wholeOrder = default;
+            UserInterface.GreetUser();
+            Streams.DisplayMenuToUser();
 
+            bool keepGoing = true;
+
+            while (keepGoing)
+            {
+                UserInterface.AskForOrder();
+                wholeOrder = Streams.AddToOrderList(int.Parse(Console.ReadLine()));
+                Console.WriteLine("Would you like to order anything else? (y/n)");
+                string userInput = Console.ReadLine().ToLower();
+                if (userInput == "n")
+                {
+                    keepGoing = false;
+                }
+            }
+
+            
+            Console.WriteLine($"Your subtotal is {SubtotalBill.SubTotalGetter(wholeOrder)}");
+            Console.WriteLine($"Your grand total is {SubtotalBill.GrandTotalGetter(wholeOrder)}");
+            Payments.GetPaymentType();
+            Receipt.DisplayReceipt();
         }
     }
 }

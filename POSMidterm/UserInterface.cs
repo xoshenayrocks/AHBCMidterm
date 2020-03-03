@@ -12,6 +12,11 @@ namespace POSMidterm
             Console.WriteLine("Please take a look at our menu!");
         }
 
+        public static void AskForOrder()
+        {
+            Console.WriteLine("What would you like to order? Please enter the corresponding menu number.");
+        }
 
+        
     }
 }

@@ -16,7 +16,7 @@ namespace POSMidterm
             string userInput = Console.ReadLine();
             if (userInput == "1" ||userInput.Equals("cash", StringComparison.OrdinalIgnoreCase))
             {
-                decimal change = (decimal)SubtotalBill.GetChange(GetCashPayment(), SubtotalBill.GetActualTotal(1, 2));
+                decimal change = (decimal)SubtotalBill.GetChange(GetCashPayment(), Streams.InstatiateGrandTotal());
                 Console.WriteLine($"Change due: ${change} ");
 
             }

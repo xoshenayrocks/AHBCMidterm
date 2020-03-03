@@ -7,15 +7,15 @@ namespace POSMidterm
     public static class SubtotalBill
     {
 
-        public static double GetTotal(double cost, double qty)
+        public static double GetSubTotal(double cost, double qty)
         {
             double total = cost * qty;
             return total;
         }
 
-        public static double GetActualTotal(double cost, double qty)
+        public static double GetGrandTotal(double cost, double qty)
         {
-            double actualTotal = GetTotal(cost, qty) * 1.06;
+            double actualTotal = GetSubTotal(cost, qty) * 1.06;
             return actualTotal;
         }
 
@@ -26,7 +26,22 @@ namespace POSMidterm
             return changeTotal;
         }
 
+        public static double SubTotalGetter(List<Product> wholeOrder)
+        {
+            double subtotal = 0;
+          foreach (Product item in wholeOrder)
+            {
+                subtotal += item.Price;
+            }
 
+            return subtotal;
+        }
+
+        public static double GrandTotalGetter(List<Product> wholeOrder)
+        {
+            double grandTotal = (SubTotalGetter(wholeOrder)) * 1.06;
+            return grandTotal;
+        }
 
 
         //below, what i think is happening is that there is a

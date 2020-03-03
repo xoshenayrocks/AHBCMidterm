@@ -48,16 +48,23 @@ namespace POSMidterm
 
         }
 
-        public static void AddToOrderList(int linenumber)
+        public static List<Product> AddToOrderList(int linenumber)
         {
-            Product orderPart = InstantiateObject(linenumber); // Menu class does not exist in this file.
+            Product orderPart = InstantiateObject(linenumber);
+            Console.WriteLine("How many do you want?");
+            int qty = int.Parse(Console.ReadLine());
 
-            wholeOrder.Add(orderPart);
+            for (int i = 1; i <= qty; i++) //qty is Alejandra's variable for the user's quanity input; it doesn ot exist in this file as yet.
+            {
+                wholeOrder.Add(orderPart);
+            }
+
+            return wholeOrder;
         }
 
         public static void DisplayMenuToUser()
         {
-            var lineCount = File.ReadLines(@"C:/Users/Sipe/AHBC-DOTNET-Q1-2020-Det/FileIO/bin/Debug/netcoreapp3.1/ale"); // Why is this still interpreted as a string?
+            var lineCount = File.ReadLines(@"C:/Users/Sipe/AHBC-DOTNET-Q1-2020-Det/FileIO/bin/Debug/netcoreapp3.1/ale2"); // Why is this still interpreted as a string?
             List<string> menuList = new List<string>(lineCount);
             var linenumber = menuList.Count;
             foreach (string item in menuList)
@@ -91,7 +98,35 @@ namespace POSMidterm
                 return foodItem;
             }
 
+
             
+        }
+
+        public static double InstatiateSubTotal()
+        {
+            double subTotal = SubtotalBill.SubTotalGetter(wholeOrder);
+            return subTotal;
+        }
+
+        public static double InstatiateGrandTotal()
+        {
+            double grandTotal = SubtotalBill.SubTotalGetter(wholeOrder) * 1.06;
+            return grandTotal;
+        }
+
+        public static string PrintOutOrder()
+        {
+            string foodName = default;
+            double foodPrice = default;
+
+            foreach (Product item in wholeOrder)
+            {
+                foodName = (item.FoodName);
+                foodPrice = (item.Price);
+                Console.WriteLine(($"You ordered {foodName} at a cost of ${foodPrice}"));
+            }
+
+            return "==========================";
         }
 
         // TryParse is an option. Split the string.
