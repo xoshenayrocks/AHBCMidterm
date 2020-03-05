@@ -9,7 +9,7 @@ namespace POSMidterm
     public class Streams
     {
 
-        static string filePath = "C:/Users/Sipe/AHBC-DOTNET-Q1-2020-Det/FileIO/bin/Debug/netcoreapp3.1/ale";
+        static string filePath = "../../../ale";
         static int linenumber = 1;
         static string orderedItem;
         static List<Product> wholeOrder = new List<Product>();
@@ -51,7 +51,7 @@ namespace POSMidterm
         public static List<Product> AddToOrderList(int linenumber)
         {
             Product orderPart = InstantiateObject(linenumber);
-            Console.WriteLine("How many do you want?");
+            Console.WriteLine($"How many {orderPart.FoodName}s do you want?");
             int qty = int.Parse(Console.ReadLine());
 
             for (int i = 1; i <= qty; i++) //qty is Alejandra's variable for the user's quanity input; it doesn ot exist in this file as yet.
@@ -64,7 +64,7 @@ namespace POSMidterm
 
         public static void DisplayMenuToUser()
         {
-            var lineCount = File.ReadLines(@"C:/Users/Sipe/AHBC-DOTNET-Q1-2020-Det/FileIO/bin/Debug/netcoreapp3.1/ale2"); // Why is this still interpreted as a string?
+            var lineCount = File.ReadLines("../../../ale2"); // Why is this still interpreted as a string?
             List<string> menuList = new List<string>(lineCount);
             var linenumber = menuList.Count;
             foreach (string item in menuList)
@@ -98,8 +98,6 @@ namespace POSMidterm
                 return foodItem;
             }
 
-
-            
         }
 
         public static double InstatiateSubTotal()
@@ -116,7 +114,8 @@ namespace POSMidterm
 
         public static string PrintOutOrder()
         {
-            string foodName = default;
+
+          string foodName = default;
             double foodPrice = default;
 
             foreach (Product item in wholeOrder)
@@ -128,6 +127,9 @@ namespace POSMidterm
 
             return "==========================";
         }
+
+
+}
 
         // TryParse is an option. Split the string.
         // Instatiate a Menu/Product class object and assign the parameters from the array created from the .Split() above.
@@ -145,11 +147,10 @@ public static void AppendTheMenu()
     using (StreamWriter inputfile = new StreamWriter(filePath, true))
     {
         inputfile.WriteLine("cool");
-    }
+    }*/
 
 
-}*/
-
-    }
 }
+
+    
 
