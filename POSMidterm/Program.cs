@@ -23,13 +23,13 @@ namespace POSMidterm
                 {
                     keepGoing = false;
                 }
-
-
-                Console.WriteLine($"Your subtotal is {Payments.PrintDollar((SubtotalBill.SubTotalGetter(wholeOrder)))}");
-                Console.WriteLine($"Your grand total is {Payments.PrintDollar((SubtotalBill.GrandTotalGetter(wholeOrder)))}");
-                Payments.GetPaymentType();
-                Receipt.DisplayReceipt();
+                
             }
+
+            Console.WriteLine($"Your subtotal is {Payments.PrintDollar((SubtotalBill.SubTotalGetter(wholeOrder)))}");
+            Console.WriteLine($"Your grand total is {Payments.PrintDollar((SubtotalBill.GrandTotalGetter(wholeOrder)))}");
+            Payments.GetPaymentType();
+            Receipt.DisplayReceipt();
         }
     }
 }
