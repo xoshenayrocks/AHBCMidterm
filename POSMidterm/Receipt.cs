@@ -29,7 +29,6 @@ namespace POSMidterm
             Console.WriteLine("==========================");
             Console.WriteLine("Thank you! Please come again!");
 
-
         }
     }
 }
