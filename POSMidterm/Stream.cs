@@ -50,16 +50,18 @@ namespace POSMidterm
 
         public static List<Product> AddToOrderList(int linenumber)
         {
+
             Product orderPart = InstantiateObject(linenumber);
             Console.WriteLine($"How many {orderPart.FoodName}s do you want?");
             int qty = int.Parse(Console.ReadLine());
 
             for (int i = 1; i <= qty; i++) //qty is Alejandra's variable for the user's quanity input; it doesn ot exist in this file as yet.
             {
-                wholeOrder.Add(orderPart);
+              wholeOrder.Add(orderPart);
             }
 
             return wholeOrder;
+
         }
 
         public static void DisplayMenuToUser()
@@ -128,8 +130,37 @@ namespace POSMidterm
             return "==========================";
         }
 
+        public static int ValidateUserInput()
+        {
+            int usersChoice = default;
+            bool keepItUp = true;
+            while (keepItUp)
+            {
+                Console.WriteLine("Please enter the number of the menu item you wish to order.");
+                var userInput = int.TryParse(Console.ReadLine(), out usersChoice);
+                if (userInput == false)
+                {
+                    Console.WriteLine("Invalid selection.");
+                    keepItUp = true;
+                }
+                else if (usersChoice == 1 || usersChoice == 2 || usersChoice == 3 || usersChoice == 4 || usersChoice == 5 || usersChoice == 6 || usersChoice == 7 || usersChoice == 8 || usersChoice == 9 || usersChoice == 10 || usersChoice == 11 || usersChoice == 12)
+                {
+                    keepItUp = false;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid selection.");
+                }
+            }
 
-}
+            return usersChoice;
+        }
+
+        
+
+
+
+    }
 
         // TryParse is an option. Split the string.
         // Instatiate a Menu/Product class object and assign the parameters from the array created from the .Split() above.
